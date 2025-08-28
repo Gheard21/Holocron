@@ -1,6 +1,23 @@
-@Holocron.App.Api_HostAddress = http://localhost:5275
+@baseUrl = http://localhost:5275/api/likes
+@token = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik1FUTBNemxDTURGR1JqSTNPRFF6TXpReFJqTkRPRVpFUXpJeE1EQkROVUZETnpoRVJEZEZNdyJ9.eyJpc3MiOiJodHRwczovL2Rldi16OW8wcTVkaC5ldS5hdXRoMC5jb20vIiwic3ViIjoiRnoyNWpzaFI2MVlzWmxTR1dyQ3ZQVUN1UjhRMHdTZFdAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vaG9sb2Nyb25vbmxpbmUub3JnIiwiaWF0IjoxNzU2NDE5MzEyLCJleHAiOjE3NTY1MDU3MTIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyIsImF6cCI6IkZ6MjVqc2hSNjFZc1psU0dXckN2UFVDdVI4UTB3U2RXIn0.o_NFlFYgo4ECOaayxzgTBMgoybOcZYrWOq6CbM9VtllignhjY2y4cE0dP5vuUxi1sQ8CwXKGYuoRhim1WqR74sLG1ejTaVQNyNT3YNiY4al8pMZ7jiVICg-6F-_FFzRLfjzgYZT6ziMic2K6cCuG0U0J-KpA-qon3GPOOB6-4F-WS4z-mqC8rKhPLWWdHP7jmim66DxS-KadWIh8zk1wPy0enM3zA3gRUC4GhvtR56KE5XsEDvELEBYNgZl4PSLBm-kFc6i6SkKftG_YBO15kklCvLeHeZdifhdGlbgEr6PBSMQNktxv5OEFeh6daAjp7ZlW507HeZVPwOViFcw31Q
 
-GET {{Holocron.App.Api_HostAddress}}/weatherforecast/
+
+# Get likes for C3PO
+GET {{baseUrl}}/C3PO
 Accept: application/json
+
+###
+
+# Add a like for C3PO
+POST {{baseUrl}}/C3PO
+Accept: application/json
+Authorization: Bearer {{token}}
+
+###
+
+# Remove a like for C3PO
+DELETE {{baseUrl}}/C3PO
+Accept: application/json
+Authorization: Bearer {{token}}
 
 ###
