@@ -1,10 +1,17 @@
+using FluentValidation;
 using Holocron.App.Api.Data;
 using Holocron.App.Api.Data.Entities;
 using Holocron.App.Api.Interfaces;
+using Holocron.App.Api.Models.Requests;
+using Holocron.App.Api.Validators;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddAutoMapper(cfg => { }, typeof(Program).Assembly);
+
+builder.Services.AddScoped<IValidator<NewCommentRequest>, NewCommentRequestValidator>();
 
 builder.Services.AddHttpContextAccessor();
 
