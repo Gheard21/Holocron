@@ -13,6 +13,8 @@ namespace Holocron.App.Api.Controllers
     [Authorize]
     public class LikesController(DataContext dataContext, ILogger<LikesController> logger, IIdentityProvider identityProvider) : ControllerBase
     {
+
+
         [HttpGet("{name}")]
         [AllowAnonymous]
         public async Task<IActionResult> GetLikesForPerson(string name)
@@ -21,6 +23,22 @@ namespace Holocron.App.Api.Controllers
             {
                 var likes = await dataContext.Likes.Where(x => x.Name == name).CountAsync();
                 return Ok(likes);
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "An error occured attempting to access the database.");
+                return StatusCode(500);
+            }
+        }
+
+        [HttpGet("{name}/me")]
+        public async Task<IActionResult> HasUserLiked(string name)
+        {
+            try
+            {
+                var tenantId = identityProvider.GetCurrentUserId();
+                var hasLiked = await dataContext.Likes.AnyAsync(x => x.Name == name && x.TenantId == tenantId);
+                return Ok(hasLiked);
             }
             catch (Exception ex)
             {

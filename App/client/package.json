@@ -12,6 +12,7 @@
     "lint": "eslint . --fix"
   },
   "dependencies": {
+    "@auth0/auth0-vue": "^2.4.0",
     "@fontsource/roboto": "5.2.6",
     "@mdi/font": "7.4.47",
     "pinia": "^3.0.3",

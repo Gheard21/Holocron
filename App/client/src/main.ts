@@ -5,19 +5,31 @@
  */
 
 // Plugins
-import { registerPlugins } from '@/plugins'
+import { registerPlugins } from "@/plugins";
+import { createAuth0 } from "@auth0/auth0-vue";
 
 // Components
-import App from './App.vue'
+import App from "./App.vue";
 
 // Composables
-import { createApp } from 'vue'
+import { createApp } from "vue";
 
 // Styles
-import 'unfonts.css'
+import "unfonts.css";
 
-const app = createApp(App)
+const app = createApp(App);
 
-registerPlugins(app)
+app.use(
+  createAuth0({
+    domain: "dev-z9o0q5dh.eu.auth0.com",
+    clientId: "QsPhZoHkhDNv6fS3izSfijpCrUM9Hk06",
+    authorizationParams: {
+      redirect_uri: window.location.origin,
+      audience: "https://holocrononline.org",
+    },
+  })
+);
 
-app.mount('#app')
+registerPlugins(app);
+
+app.mount("#app");

@@ -7,6 +7,7 @@ export const usePeopleStore = defineStore("people", {
     people: [] as Person[],
     loading: false,
     error: null as string | null,
+    selectedPerson: null as Person | null,
   }),
   actions: {
     async fetchPeople(url = "https://swapi.info/api/people") {
@@ -61,6 +62,12 @@ export const usePeopleStore = defineStore("people", {
       } finally {
         this.loading = false;
       }
+    },
+    setSelectedPerson(person: Person | null) {
+      this.selectedPerson = person;
+    },
+    clearSelectedPerson() {
+      this.selectedPerson = null;
     },
   },
 });
