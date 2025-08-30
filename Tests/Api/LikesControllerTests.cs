@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using Holocron.App.Api.Controllers;
+﻿using Holocron.App.Api.Controllers;
 using Holocron.App.Api.Data;
 using Holocron.App.Api.Data.Entities;
 using Holocron.App.Api.Interfaces;
@@ -8,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Moq;
-using Xunit;
 
 namespace Holocron.Tests.Api
 {
