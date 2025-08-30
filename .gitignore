@@ -398,6 +398,14 @@ FodyWeavers.xsd
 *.msi
 *.msix
 *.msm
+
+# SQLite local database files
+*.db
+*.db-shm
+*.db-wal
+App/Api/Data/holocron.db
+App/Api/Data/holocron.db-shm
+App/Api/Data/holocron.db-wal
 *.msp
 
 # JetBrains Rider
