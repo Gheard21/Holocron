@@ -2,7 +2,6 @@ namespace Holocron.App.Api.Validators;
 
 using FluentValidation;
 using Holocron.App.Api.Models.Requests;
-using System;
 
 public class NewCommentRequestValidator : AbstractValidator<NewCommentRequest>
 {

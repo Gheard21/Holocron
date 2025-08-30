@@ -4,6 +4,7 @@ using Holocron.App.Api.Data.Entities;
 using Holocron.App.Api.Interfaces;
 using Holocron.App.Api.Models.Requests;
 using Holocron.App.Api.Validators;
+using Holocron.App.Api.Providers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 

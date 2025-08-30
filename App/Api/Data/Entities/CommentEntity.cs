@@ -1,6 +1,6 @@
 namespace Holocron.App.Api.Data.Entities;
 
-public class CommentEntity
+public class CommentEntity : ITenantScoped
 {
     public Guid Id { get; set; } = Guid.NewGuid();
     public string TenantId { get; set; } = null!;

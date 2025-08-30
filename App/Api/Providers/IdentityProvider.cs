@@ -1,7 +1,7 @@
 using System.Security.Claims;
 using Holocron.App.Api.Interfaces;
 
-namespace Holocron.App.Api.Data.Entities;
+namespace Holocron.App.Api.Providers;
 
 public class IdentityProvider(IHttpContextAccessor httpContextAccessor) : IIdentityProvider
 {

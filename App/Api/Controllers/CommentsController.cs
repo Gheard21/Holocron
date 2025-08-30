@@ -3,6 +3,7 @@ using FluentValidation;
 using Holocron.App.Api.Data;
 using Holocron.App.Api.Data.Entities;
 using Holocron.App.Api.Models.Requests;
+using Holocron.App.Api.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,17 +12,19 @@ namespace Holocron.App.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")] // keep base clean; explicit routes per action
-public class CommentsController(DataContext dataContext, IMapper mapper, IValidator<NewCommentRequest> validator) : ControllerBase
+public class CommentsController(DataContext dataContext, IMapper mapper, IValidator<NewCommentRequest> validator, IIdentityProvider identityProvider) : ControllerBase
 {
     [HttpGet("{name}")]
     [AllowAnonymous]
     public async Task<IActionResult> GetComments(string name)
     {
         var comments = await dataContext.Comments
+            .AsNoTracking()
             .Where(c => c.Name == name)
             .ToListAsync();
 
-        return Ok(comments);
+        var response = comments.Select(comment => mapper.Map<Comment>(comment)).ToList();
+        return Ok(response);
     }
 
     [HttpPost]
@@ -38,7 +41,9 @@ public class CommentsController(DataContext dataContext, IMapper mapper, IValida
         dataContext.Comments.Add(commentEntity);
         await dataContext.SaveChangesAsync();
 
-        return CreatedAtAction(nameof(GetComments), new { name = commentEntity.Name }, commentEntity);
+        var response = mapper.Map<Comment>(commentEntity);
+
+        return CreatedAtAction(nameof(GetComments), new { name = commentEntity.Name }, response);
     }
 
     [HttpGet("{name}/count")]
@@ -52,9 +57,7 @@ public class CommentsController(DataContext dataContext, IMapper mapper, IValida
     [HttpGet("{name}/me")]
     public async Task<IActionResult> HasUserCommented(string name)
     {
-        var tenantId = HttpContext.User?.Identity?.IsAuthenticated == true
-            ? HttpContext.User.FindFirst("sub")?.Value
-            : null;
+        var tenantId = identityProvider.GetCurrentUserId();
 
         if (string.IsNullOrEmpty(tenantId)) return Unauthorized();
 

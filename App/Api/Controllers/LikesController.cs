@@ -26,7 +26,7 @@ namespace Holocron.App.Api.Controllers
             }
             catch (Exception ex)
             {
-                logger.LogError(ex, "An error occured attempting to access the database.");
+                logger.LogError(ex, "An error occurred attempting to access the database.");
                 return StatusCode(500);
             }
         }
@@ -42,7 +42,7 @@ namespace Holocron.App.Api.Controllers
             }
             catch (Exception ex)
             {
-                logger.LogError(ex, "An error occured attempting to access the database.");
+                logger.LogError(ex, "An error occurred attempting to access the database.");
                 return StatusCode(500);
             }
         }
@@ -65,7 +65,7 @@ namespace Holocron.App.Api.Controllers
             }
             catch (Exception ex)
             {
-                logger.LogError(ex, "An error occured attempting to access the database.");
+                logger.LogError(ex, "An error occurred attempting to access the database.");
                 return StatusCode(500);
             }
         }

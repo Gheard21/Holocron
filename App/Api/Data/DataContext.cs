@@ -56,19 +56,12 @@ public class DataContext(DbContextOptions<DataContext> options, IIdentityProvide
     private void SetTenantId()
     {
         var tenantId = identityProvider.GetCurrentUserId();
+        if (string.IsNullOrWhiteSpace(tenantId)) return;
 
-        if (string.IsNullOrEmpty(tenantId)) return;
-
-        foreach (var entry in ChangeTracker.Entries<LikeEntity>()
-                     .Where(e => e.State == EntityState.Added))
+        foreach (var entry in ChangeTracker.Entries()
+                     .Where(e => e.State == EntityState.Added && e.Entity is ITenantScoped))
         {
-            entry.Entity.TenantId = tenantId;
-        }
-
-        foreach (var entry in ChangeTracker.Entries<CommentEntity>()
-                     .Where(e => e.State == EntityState.Added))
-        {
-            entry.Entity.TenantId = tenantId;
+            ((ITenantScoped)entry.Entity).TenantId = tenantId;
         }
     }
 }

@@ -9,5 +9,6 @@ public class CommentProfile : Profile
     public CommentProfile()
     {
         CreateMap<NewCommentRequest, CommentEntity>();
+        CreateMap<CommentEntity, Comment>();
     }
 }

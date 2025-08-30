@@ -7,6 +7,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{ABF631A3-24C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Holocron.App.Api", "App\Api\Holocron.App.Api.csproj", "{3EBDBADD-76E1-4629-B872-B4567EBEA9E7}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{2C8826B9-9B33-4838-AEC5-55B2AF4C6337}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Holocron.Tests.Api", "Tests\Api\Holocron.Tests.Api.csproj", "{98517DDB-FEB0-4FD4-BC96-63D6FF87BDAA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,8 +24,13 @@ Global
 		{3EBDBADD-76E1-4629-B872-B4567EBEA9E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3EBDBADD-76E1-4629-B872-B4567EBEA9E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3EBDBADD-76E1-4629-B872-B4567EBEA9E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98517DDB-FEB0-4FD4-BC96-63D6FF87BDAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98517DDB-FEB0-4FD4-BC96-63D6FF87BDAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98517DDB-FEB0-4FD4-BC96-63D6FF87BDAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98517DDB-FEB0-4FD4-BC96-63D6FF87BDAA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{3EBDBADD-76E1-4629-B872-B4567EBEA9E7} = {ABF631A3-24C4-4091-8C16-8917C2E4CE8C}
+		{98517DDB-FEB0-4FD4-BC96-63D6FF87BDAA} = {2C8826B9-9B33-4838-AEC5-55B2AF4C6337}
 	EndGlobalSection
 EndGlobal
